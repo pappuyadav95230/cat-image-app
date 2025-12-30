@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch 3 random cat images
   async function fetchCats() {
     try {
-      const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=3");
+      const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=6");
       const data = await res.json();
       const urls = data.map(item => item.url);
       displayImages(urls);
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch 3 random dog images
   async function fetchDogs() {
     try {
-      const res = await fetch("https://dog.ceo/api/breeds/image/random/3");
+      const res = await fetch("https://dog.ceo/api/breeds/image/random/6");
       const data = await res.json();
       displayImages(data.message);
     } catch (err) {
