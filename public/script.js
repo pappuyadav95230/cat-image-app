@@ -1,25 +1,21 @@
-// 1️⃣ API URL stored in variable
-let CAT_API_URL = "https://api.thecatapi.com/v1/images/search";
+const btn = document.getElementById("catBtn");
+const img = document.getElementById("catImg");
+const themeToggle = document.getElementById("themeToggle");
 
-// 2️⃣ Get DOM elements
-let catBtn = document.getElementById("catBtn");
-let catImg = document.getElementById("catImg");
+// Cat API
+btn.addEventListener("click", async () => {
+  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const data = await res.json();
+  img.src = data[0].url;
+});
 
-// 3️⃣ Add click event
-catBtn.addEventListener("click", getCatImage);
+// Theme toggle
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 
-// 4️⃣ Function to fetch cat image
-function getCatImage() {
-  fetch(CAT_API_URL)
-    .then(response => response.json())
-    .then(data => {
-      // API returns array → take first object → url
-      let imageUrl = data[0].url;
-
-      // Show image in HTML
-      catImg.src = imageUrl;
-    })
-    .catch(error => {
-      console.log("Error:", error);
-    });
-}
+  if (document.body.classList.contains("dark")) {
+    themeToggle.textContent = "☀️ Light Mode";
+  } else {
+    themeToggle.textContent = "🌙 Dark Mode";
+  }
+});

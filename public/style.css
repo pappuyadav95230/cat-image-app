@@ -1,3 +1,21 @@
+/* CSS Variables */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #111827;
+  --card-bg: #ffffff;
+  --btn-bg: #6366f1;
+  --btn-hover: #4f46e5;
+}
+
+/* Dark theme */
+body.dark {
+  --bg-color: #0f172a;
+  --text-color: #e5e7eb;
+  --card-bg: #1e293b;
+  --btn-bg: #22c55e;
+  --btn-hover: #16a34a;
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -5,61 +23,77 @@
   box-sizing: border-box;
 }
 
-/* Page layout */
+/* Body */
 body {
   min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f9fafb;
-  padding: 40px;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Container */
+.container {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s;
 }
 
 /* Heading */
 h2 {
-  font-size: 26px;
   margin-bottom: 20px;
+  font-size: 24px;
 }
 
-/* Button */
+/* Buttons */
 button {
-  padding: 12px 26px;
+  padding: 12px 24px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #6366f1;
+  background-color: var(--btn-bg);
   color: #ffffff;
   border: none;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #4f46e5;
+  background-color: var(--btn-hover);
   transform: translateY(-2px);
-}
-
-button:active {
-  transform: scale(0.98);
 }
 
 /* Image */
 img {
-  margin-top: 25px;
-  max-width: 300px;
-  width: 100%;
+  margin-top: 20px;
+  max-width: 100%;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
-/* Small screens */
-@media (max-width: 480px) {
-  h2 {
-    font-size: 22px;
-  }
-
-  button {
-    width: 100%;
-  }
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
 }
+
+.theme-toggle:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
