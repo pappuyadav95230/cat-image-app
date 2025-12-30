@@ -3,9 +3,9 @@ const dogBtn = document.getElementById("dogBtn");
 const imageGrid = document.getElementById("imageGrid");
 const themeToggle = document.getElementById("themeToggle");
 
-// Helper function to display images
+// Function to display images
 function displayImages(urls) {
-  imageGrid.innerHTML = ""; // clear previous
+  imageGrid.innerHTML = ""; // clear previous images
   urls.forEach(url => {
     const img = document.createElement("img");
     img.src = url;
@@ -13,19 +13,27 @@ function displayImages(urls) {
   });
 }
 
-// Fetch 3 random cat images initially
+// Fetch 3 random cat images
 async function fetchCats() {
-  const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=3");
-  const data = await res.json();
-  const urls = data.map(item => item.url);
-  displayImages(urls);
+  try {
+    const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=3");
+    const data = await res.json();
+    const urls = data.map(item => item.url);
+    displayImages(urls);
+  } catch (err) {
+    console.error("Failed to fetch cats:", err);
+  }
 }
 
 // Fetch 3 random dog images
 async function fetchDogs() {
-  const res = await fetch("https://dog.ceo/api/breeds/image/random/3");
-  const data = await res.json();
-  displayImages(data.message);
+  try {
+    const res = await fetch("https://dog.ceo/api/breeds/image/random/3");
+    const data = await res.json();
+    displayImages(data.message);
+  } catch (err) {
+    console.error("Failed to fetch dogs:", err);
+  }
 }
 
 // Initial load: 3 cat images
@@ -44,4 +52,3 @@ themeToggle.addEventListener("click", () => {
     themeToggle.textContent = "🌙 Dark Mode";
   }
 });
-
