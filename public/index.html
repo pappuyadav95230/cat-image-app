@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Random Cat Image</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Cat & Dog Images</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Theme Toggle -->
-  <button id="themeToggle" class="theme-toggle">
-    🌙 Dark Mode
-  </button>
+  <button id="themeToggle" class="theme-toggle">🌙 Dark Mode</button>
 
   <div class="container">
-    <h2>🐱 Random Cat Image Generator</h2>
+    <h2>🐱🐶 Random Cat & Dog Images</h2>
 
-    <button id="catBtn">Get Cat Image</button>
+    <div class="buttons">
+      <button id="catBtn">Get Cat Images</button>
+      <button id="dogBtn">Get Dog Images</button>
+    </div>
 
-    <img id="catImg" alt="Cat will appear here" />
+    <div class="image-grid" id="imageGrid">
+      <!-- Images will appear here -->
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
